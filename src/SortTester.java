@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Tests of Sorter objects.
  *
- * @author Your Name
+ * @author Albert-Kenneth Okine
  */
 public class SortTester {
 
@@ -44,5 +44,29 @@ public class SortTester {
     sorter.sort(original, (x, y) -> x.compareTo(y));
     assertArrayEquals(original, expected);
   } // orderedStringTest
+
+  @Test
+  public void integerTest() {
+    Integer[] original = { 9, 1, 2, 8, 7, 3, 4, 6, 5, 0 };
+    Integer[] expected = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+    sorter.sort(original, (x, y) -> x.compareTo(y));
+    assertArrayEquals(original, expected);
+  } // integerTest
+
+  @Test
+  public void emptyTest() {
+    Integer[] original = {};
+    Integer[] expected = {};
+    sorter.sort(original, (x, y) -> x.compareTo(y));
+    assertArrayEquals(original, expected);
+  } // emptyTest
+
+  @Test
+  public void multipleOccurencesTest() {
+    Integer[] original = { 1, 2, 3, 4, 1, 2, 3, 1, 2, 1 };
+    Integer[] expected = { 1, 1, 1, 1, 2, 2, 2, 3, 3, 4 };
+    sorter.sort(original, (x, y) -> x.compareTo(y));
+    assertArrayEquals(original, expected);
+  } // multipleOccurencesTest
 
 } // class SortTester
